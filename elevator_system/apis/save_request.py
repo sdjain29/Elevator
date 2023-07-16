@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from ..models import Elevator, Request
 from ..serializers import RequestSerializer
 from django.db import transaction
+from .direction import get_floor
 
 class SaveUserInternalRequestView(APIView):
     def post(self, request, elevator_id):
@@ -20,15 +21,15 @@ class SaveUserInternalRequestView(APIView):
 
     
 class SaveUserExternalRequestView(APIView):
-    def get_elevator(requested_floor):
+    def get_elevator(self, requested_floor):
         elevators = Elevator.objects.filter(is_operational=True)
 
         optimal_elevator = None
-        if len(elevator)==0:
+        if len(elevators)==0:
             return optimal_elevator
         
         optimal_elevator = elevators[0]
-        max_distance = -1
+        min_distance = 10000
 
         for elevator in elevators:
             current_floor = elevator.current_floor
@@ -55,19 +56,18 @@ class SaveUserExternalRequestView(APIView):
                     else:
                         distance = requested_floor - current_floor
 
-            if distance > max_distance:
-                max_distance = distance
+            if distance < min_distance:
+                min_distance = distance
                 optimal_elevator = elevator
 
         return optimal_elevator
     
-    def post(self, request, elevator_id):
-
+    def post(self, request):
         requested_floor = request.data.get('floor')
         elevator = self.get_elevator(requested_floor)
 
-        if elevator==None:
-            return Response({'error': 'Elevator in Maintainance.'}, status=status.HTTP_404_NOT_FOUND)
+        if elevator is None:
+            return Response({'error': 'No available elevators or elevator is under maintenance.'}, status=status.HTTP_404_NOT_FOUND)
         
         return elevator_trigger(elevator, requested_floor)
 
@@ -76,7 +76,7 @@ class SaveUserExternalRequestView(APIView):
 def elevator_trigger(elevator, requested_floor):
     requests = elevator.requests.filter(status='PENDING', floor=requested_floor)
     if len(requests) != 0:
-        serializer = RequestSerializer(requests)
+        serializer = RequestSerializer(requests[0])
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -99,5 +99,6 @@ def elevator_trigger(elevator, requested_floor):
                 elevator.is_open = True
                 elevator.save()
 
+    get_floor(elevator)
     serializer = RequestSerializer(request_obj)
     return Response(serializer.data, status=status.HTTP_201_CREATED)

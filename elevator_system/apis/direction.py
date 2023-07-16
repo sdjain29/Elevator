@@ -17,9 +17,8 @@ class CurrentDirectionView(APIView):
 
         return Response({'current_direction': elevator.current_direction})
 
-def get_floor(self, elevator):
+def get_floor(elevator):
     requests = elevator.requests.filter(status='PENDING')
-
     if not requests:
         elevator.current_direction = "IDLE"
         elevator.save()
@@ -38,8 +37,8 @@ def get_floor(self, elevator):
                 elevator.current_direction = "DOWN"
                 elevator.save()
                 return next_destination
-    elif current_direction == "DOWN":
-        next_destination = requests.filter(floor__lt=current_floor).order_by('-floor').first()
+    else:
+        next_destination = requests.filter(floor__lt=current_floor+1).order_by('-floor').first()
         if next_destination:
             return next_destination
         else:
@@ -62,9 +61,6 @@ class NextDestinationView(APIView):
         if elevator.is_operational == False:
             return Response({'error': 'Elevator in Maintainance.'}, status=status.HTTP_404_NOT_FOUND)
 
-        if elevator.current_direction == "IDLE":
-            return Response({'next_floor': 'NO CHANGE'}, status=status.HTTP_404_NOT_FOUND)
-
         next_destination = get_floor(elevator)
         if next_destination == None:
             return Response({'next_destination': elevator.current_floor})
@@ -82,24 +78,23 @@ class SetElevatorDoorView(APIView):
         if elevator.is_operational == False:
             return Response({'error': 'Elevator in Maintainance.'}, status=status.HTTP_404_NOT_FOUND)
 
-        is_open = request.data.get('is_open')
-
-        if is_open == True:
+        action = request.data.get('action')
+        if action == 'open':
             elevator.is_open = True
             elevator.save()
             return Response({'status': 'Success'}, status=status.HTTP_200_OK)
-        
-        
-        next_destination = get_floor(elevator)
-        if next_destination ==  None:
-            elevator.is_open = False
-            elevator.save()
-        else:
-            with transaction.atomic():
-                next_destination.status = 'COMPLETED'
-                next_destination.save()
-                elevator.current_floor = next_destination.floor
-                elevator.is_open = True
+        elif action == 'close':
+            next_destination = get_floor(elevator)
+            if next_destination ==  None:
+                elevator.is_open = False
                 elevator.save()
-
-        return Response({'status': 'Success'}, status=status.HTTP_200_OK)
+            else:
+                with transaction.atomic():
+                    next_destination.status = 'COMPLETED'
+                    next_destination.save()
+                    elevator.current_floor = next_destination.floor
+                    elevator.is_open = True
+                    elevator.save()
+            return Response({'status': 'Success'}, status=status.HTTP_200_OK)
+        else:
+            return Response({'error': 'Invalid action'}, status=status.HTTP_400_BAD_REQUEST)
