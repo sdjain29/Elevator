@@ -2,8 +2,15 @@ import uuid
 from django.db import models
 
 class Elevator(models.Model):
+    DIRECTION_CHOICES = [
+        ('UP', 'Up'),
+        ('DOWN', 'Down'),
+        ('IDLE', 'Idle'),
+    ]
+    current_direction = models.CharField(max_length=5, choices=DIRECTION_CHOICES, default='IDLE')
     is_operational = models.BooleanField(default=True)
     current_floor = models.PositiveIntegerField(default=0)
+    is_open = models.BooleanField(default=False)
 
 class Request(models.Model):
     STATUS_CHOICES = [
