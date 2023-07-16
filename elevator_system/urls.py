@@ -13,6 +13,6 @@ urlpatterns = [
     path('api/elevator/<int:elevator_id>/current_direction/', CurrentDirectionView.as_view(), name='current_direction'),
     path('api/elevator/<int:elevator_id>/save_request/', SaveUserInternalRequestView.as_view(), name='save_request'),
     path('api/elevator/<int:elevator_id>/door_action/', SetElevatorDoorView.as_view(), name='save_request'),
-    path('api/elevator/call', SaveUserExternalRequestView.as_view(), name='call_elevator'),
+    path('api/elevator/call/', SaveUserExternalRequestView.as_view(), name='call_elevator'),
     path('api/elevator/<int:elevator_id>/set_operational/', SetElevatorOperationalView.as_view(), name='set_operational'),
 ]

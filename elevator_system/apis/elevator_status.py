@@ -17,6 +17,11 @@ class SetElevatorOperationalView(APIView):
 
         elevator.is_operational = is_operational
         elevator.save()
+        
+        request_objs = elevator.requests.filter(status='PENDING')
+        for i in request_objs:
+            i.status = 'CANCELLED'
+            i.save()
 
         return Response({'status': 'Success'}, status=status.HTTP_200_OK)
     

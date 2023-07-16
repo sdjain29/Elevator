@@ -7,8 +7,6 @@ class RequestSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class ElevatorSerializer(serializers.ModelSerializer):
-    requests = RequestSerializer(many=True, read_only=True)
-
     class Meta:
         model = Elevator
         fields = '__all__'
