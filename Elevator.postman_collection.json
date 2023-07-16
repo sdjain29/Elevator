@@ -1,0 +1,855 @@
+{
+	"info": {
+		"_postman_id": "45d599a9-55b2-4eea-8486-c373ace7b855",
+		"name": "Elevator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5217589"
+	},
+	"item": [
+		{
+			"name": "Elevator Init",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"num_elevators\":10\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/elevator/initialize/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"elevator",
+						"initialize",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "init",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"num_elevators\":10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/elevator/initialize/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"elevator",
+								"initialize",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 17:19:09 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "931"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 16,\n        \"current_direction\": \"IDLE\",\n        \"is_operational\": true,\n        \"current_floor\": 0,\n        \"is_open\": false\n    },\n    {\n        \"id\": 17,\n        \"current_direction\": \"IDLE\",\n        \"is_operational\": true,\n        \"current_floor\": 0,\n        \"is_open\": false\n    },\n    {\n        \"id\": 18,\n        \"current_direction\": \"IDLE\",\n        \"is_operational\": true,\n        \"current_floor\": 0,\n        \"is_open\": false\n    },\n    {\n        \"id\": 19,\n        \"current_direction\": \"IDLE\",\n        \"is_operational\": true,\n        \"current_floor\": 0,\n        \"is_open\": false\n    },\n    {\n        \"id\": 20,\n        \"current_direction\": \"IDLE\",\n        \"is_operational\": true,\n        \"current_floor\": 0,\n        \"is_open\": false\n    },\n    {\n        \"id\": 21,\n        \"current_direction\": \"IDLE\",\n        \"is_operational\": true,\n        \"current_floor\": 0,\n        \"is_open\": false\n    },\n    {\n        \"id\": 22,\n        \"current_direction\": \"IDLE\",\n        \"is_operational\": true,\n        \"current_floor\": 0,\n        \"is_open\": false\n    },\n    {\n        \"id\": 23,\n        \"current_direction\": \"IDLE\",\n        \"is_operational\": true,\n        \"current_floor\": 0,\n        \"is_open\": false\n    },\n    {\n        \"id\": 24,\n        \"current_direction\": \"IDLE\",\n        \"is_operational\": true,\n        \"current_floor\": 0,\n        \"is_open\": false\n    },\n    {\n        \"id\": 25,\n        \"current_direction\": \"IDLE\",\n        \"is_operational\": true,\n        \"current_floor\": 0,\n        \"is_open\": false\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Elevator Internal Floor Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"floor\":11\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/elevator/1/save_request/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"elevator",
+						"1",
+						"save_request",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"floor\":10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/elevator/1/save_request/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"elevator",
+								"1",
+								"save_request",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 17:20:32 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "52"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 11,\n    \"floor\": 10,\n    \"status\": \"PENDING\",\n    \"elevator\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Elevator External Floor Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"floor\":11\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/elevator/call/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"elevator",
+						"call",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Elevator Internal Floor Request Copy",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"floor\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/elevator/call/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"elevator",
+								"call",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 17:25:22 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "51"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 13,\n    \"floor\": 1,\n    \"status\": \"PENDING\",\n    \"elevator\": 2\n}"
+				}
+			]
+		},
+		{
+			"name": "Next Destination",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/elevator/1/next_destination/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"elevator",
+						"1",
+						"next_destination",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/elevator/1/next_destination/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"elevator",
+								"1",
+								"next_destination",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 17:22:30 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "23"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"next_destination\": 10\n}"
+				}
+			]
+		},
+		{
+			"name": "Elevetor Pending Request List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/elevator/1/requests/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"elevator",
+						"1",
+						"requests",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/elevator/1/requests/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"elevator",
+								"1",
+								"requests",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 17:23:27 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "54"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": 11,\n        \"floor\": 10,\n        \"status\": \"PENDING\",\n        \"elevator\": 1\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "current direction",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/elevator/1/current_direction/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"elevator",
+						"1",
+						"current_direction",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"floor\":10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/elevator/1/current_direction/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"elevator",
+								"1",
+								"current_direction",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 17:22:56 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"current_direction\": \"UP\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Open/Close door",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"action\":\"close\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/elevator/1/door_action/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"elevator",
+						"1",
+						"door_action",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"action\":\"close\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/elevator/1/door_action/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"elevator",
+								"1",
+								"door_action",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 17:24:27 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "20"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"Success\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Operation/Non Operational Elevator",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"is_operational\":true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{host}}/elevator/1/set_operational/",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"elevator",
+						"1",
+						"set_operational",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_operational\":true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/elevator/1/set_operational/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"elevator",
+								"1",
+								"set_operational",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 16 Jul 2023 17:26:24 GMT"
+						},
+						{
+							"key": "Server",
+							"value": "WSGIServer/0.2 CPython/3.9.6"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie"
+						},
+						{
+							"key": "Allow",
+							"value": "POST, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Length",
+							"value": "20"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"Success\"\n}"
+				}
+			]
+		}
+	]
+}
